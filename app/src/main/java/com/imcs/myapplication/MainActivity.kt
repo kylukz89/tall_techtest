@@ -1,21 +1,38 @@
 package com.imcs.myapplication
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatEditText
 
-class MainActivity : BaseActivity() {
+class MainActivity : AppCompatActivity() {
 
-    private val searchCityBar: AppCompatEditText by lazy {
-        findViewById(R.id.city_search_name)
+    private val searchCityBar by lazy {
+        findViewById<AppCompatEditText>(R.id.city_search_name)
     }
-
-    override fun setContentLayout(): Int = R.layout.activity_main
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        setupViews()
     }
 
-    override fun setupViews() {
+    fun setupViews() {
+        searchCityBar.addTextChangedListener(
+            object : TextWatcher {
+                override fun afterTextChanged(p0: Editable?) {
+                    println("-==1============> $p0")
+                }
 
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                    println("-==2============> $p0")
+                }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                    println("-=3=============> $p0")
+                }
+            }
+        )
     }
 }
