@@ -1,6 +1,6 @@
 package com.imcs.myapplication.di
 
-class InitModule {
+class ModuleInitialization {
     module {
         single<WeatherRepository> {
             WeatherRepositoryImpl(get())

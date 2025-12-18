@@ -1,9 +1,6 @@
-package com.imcs.myapplication
+package com.imcs.myapplication.data.source
 
-interface WeatherRepository {
-    suspend fun fetchCityByName(name: String): City
-    suspend fun fetchWeatherByCity(lat: String, long: String): CityWeather
-}
+import com.imcs.myapplication.data.repository.WeatherRepository
 
 class WeatherRepositoryImpl(
     private val api: WeatherAPI
@@ -20,6 +17,7 @@ class WeatherRepositoryImpl(
     }
 
     override suspend fun fetchWeatherByCity(lat: String, long: String): CityWeather {
+        val response = api.fetchWeatherByCity(lat, long)
         return CityWeather(
             "sun"
         )

@@ -1,5 +1,7 @@
-package com.imcs.myapplication
+package com.imcs.myapplication.data.source
 
+import com.imcs.myapplication.entity.CityResponse
+import com.imcs.myapplication.entity.CityWeatherResponse
 import retrofit2.http.GET
 
 interface WeatherAPI {
@@ -10,14 +12,3 @@ interface WeatherAPI {
     @GET("forecast")
     fun fetchWeatherByCity(lat: String, long: String): CityWeatherResponse
 }
-
-data class CityResponse(
-    val id: Int?,
-    val name: String?,
-    val lat: String?,
-    val long: String?,
-)
-
-data class CityWeatherResponse(
-    val someWeather: String?
-)

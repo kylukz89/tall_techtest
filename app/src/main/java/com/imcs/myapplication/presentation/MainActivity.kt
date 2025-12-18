@@ -1,10 +1,12 @@
-package com.imcs.myapplication
+package com.imcs.myapplication.presentation
 
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatEditText
+import com.imcs.myapplication.R
+import com.imcs.myapplication.WeatherViewModel
 
 class MainActivity : AppCompatActivity() {
 
