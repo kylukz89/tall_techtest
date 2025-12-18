@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Weather App</string>
+    <string name="search_bar_hint">Type a city...</string>
 </resources>
