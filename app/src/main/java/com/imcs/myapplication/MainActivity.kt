@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setupListener() {
-        viewModel.cityWeather.observer(this) {
+        viewModel.cityWeather.observe(this) {
 
         }
     }
