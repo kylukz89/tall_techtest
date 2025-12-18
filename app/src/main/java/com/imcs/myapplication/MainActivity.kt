@@ -14,6 +14,10 @@ class MainActivity : AppCompatActivity() {
         findViewById<AppCompatEditText>(R.id.city_search_name)
     }
 
+    private val weather by lazy {
+        findViewById<AppCompatEditText>(R.id.weather)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -38,7 +42,7 @@ class MainActivity : AppCompatActivity() {
 
     fun setupListener() {
         viewModel.cityWeather.observe(this) {
-
+            weather.text = it.someWeather
         }
     }
 }
