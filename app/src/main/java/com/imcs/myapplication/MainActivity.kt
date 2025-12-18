@@ -8,6 +8,8 @@ import androidx.appcompat.widget.AppCompatEditText
 
 class MainActivity : AppCompatActivity() {
 
+    private val viewModel: WeatherViewModel by viewModel()
+
     private val searchCityBar by lazy {
         findViewById<AppCompatEditText>(R.id.city_search_name)
     }
@@ -16,23 +18,27 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setupViews()
+        setupListener()
     }
 
     fun setupViews() {
         searchCityBar.addTextChangedListener(
             object : TextWatcher {
-                override fun afterTextChanged(p0: Editable?) {
-                    println("-==1============> $p0")
-                }
-
+                override fun afterTextChanged(p0: Editable?) {}
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                    println("-==2============> $p0")
-                }
-
-                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                    println("-=3=============> $p0")
+                    val cityTyped = searchCityBar.text
+                    if (cityTyped.isNullOrEmpty().not()) {
+                        viewModel.fetchCityByName(cityTyped.toString())
+                    }
                 }
             }
         )
+    }
+
+    fun setupListener() {
+        viewModel.cityWeather.observer(this) {
+
+        }
     }
 }
